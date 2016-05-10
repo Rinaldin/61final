@@ -11,11 +11,11 @@ float sunx;
 boolean array = true;
 
 int cloudsn = 7;
-int a = 11;  //number of people
+int many = 11;  //number of people
 
 Cloud[] clouds = new Cloud[cloudsn];  //starting people and clouds
-Person[] people = new Person[a];    //setting up 2 Person arrays, people and nik
-Person[] nik = new Person[a];
+Person[] people = new Person[many];    //setting up 2 Person arrays, people and nik
+Person[] nik = new Person[many];
 
 //list of names for the people
 String[] names = {"Emma", "Noah", "Olivia", "Liam", "Sophia", "Mason", "Isabella", "Jacob", "Ava",
@@ -93,14 +93,14 @@ void cloudStartup(){
 }
   
 void peopleStartup(){
-    for(int n = 0; n < a; n++){
+    for(int n = 0; n < many; n++){
     people[n] = new Person();    //initializing people
     nik[n] = new Person();     // initializing nik
     people[n].startup();
     nik[n].startup();
   }
   
-  for(int n = 0; n < a; n++){ 
+  for(int n = 0; n < many; n++){ 
     people[n].x = 50 + (n * 50);    //placing people
     nik[n].x = 50 + (n * 50);    //placing nik
   }
@@ -175,12 +175,12 @@ void scene(){
 void show(){
   
   if (array == true){
-    for(int n = 0; n < a; n++){       //showing people
+    for(int n = 0; n < many; n++){       //showing people
       people[n].position();
       people[n].show();
     }
   }else{
-    for(int n = 0; n < a; n++){       //showing nik
+    for(int n = 0; n < many; n++){       //showing nik
       nik[n].position();
       nik[n].show();
       }
@@ -477,27 +477,33 @@ void bonus(Person a[]){
 
 
 void numbers(){
-  hAveraging();        //this displays averages
-  weightAveraging();
+    if( array == true){
+       hAveraging(people);        //this displays averages
+       weightAveraging(people);
+    } else if(array == false){    
+       hAveraging(nik);        //this displays averages
+       weightAveraging(nik);
+    }
+ 
 }
 
  
-void weightAveraging(){   //calculating average weight
+void weightAveraging(Person a[]){   //calculating average weight
   float average = 0;
-  for(int n = 0; n < a; n++){
-    average += people[n].weight;
+  for(int n = 0; n < a.length; n++){
+    average += a[n].weight;
   }
-  average = int(average / a);
+  average = int(average / a.length);
   text("Average weight : " + average + "lbs", 20, (1.3 * horizon) + 20);  //displaying weight average
 }
 
-void hAveraging(){      //calculating average height
+void hAveraging(Person a[]){      //calculating average height
   int feet, inches;
   float average = 0;
-  for(int n = 0; n < a; n++){
-    average += people[n].h;
+  for(int n = 0; n < a.length; n++){
+    average += a[n].h;
   }
-  average = (average / a);
+  average = (average / a.length);
   feet = int(average/12);
   inches = int(average%12);
   text("Average height : " + feet + "'" + inches + "''", 20, 1.3 * horizon);    //displaying height average
