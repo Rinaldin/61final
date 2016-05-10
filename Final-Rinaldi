@@ -243,7 +243,7 @@ void help(){     //eventually will be help screen
    text("Press '?' to toggle help screen", 50,240);
    text("Press 'q' to quit", 50, 260);
    
-   String b = "Project 5 by Nikoli Rinaldi:\n Two random sets of people are generated with random qualities.\n Their height and width follow bell curves.\n The black lines represent maximum and minimum\n heights possible.\n The red lines represnt first and third quartiles.\n The bird lands on the shoulder of the tallest person.";
+   String b = "Project 5 by Nikoli Rinaldi:\n Two random sets of freakishly tall\n people are generated with random qualities.\n Their height and width follow bell curves.\n The black lines represent maximum and minimum\n heights possible.\n The red lines represnt first and third quartiles.\n The bird lands on the shoulder of the tallest person.";
    text( b, width/2, height/16);      //summary
    
    help.show();    //help button shows on the help screen
